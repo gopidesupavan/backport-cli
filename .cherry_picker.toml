@@ -1,6 +1,6 @@
 team = "gopidesupavan"
 repo = "backport-cli"
-"check_sha"= "9eba6ad5801d2f100dc10e1d6c8965780a5e2847"
+"check_sha"= "9a2fced2f1620f3e993f20b0afca43b5f7fe51fc"
 fix_commit_msg = false
 default_branch = "main"
 require_version_in_branch_name=false
