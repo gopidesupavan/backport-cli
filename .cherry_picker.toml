@@ -3,3 +3,4 @@ repo = "backport-cli"
 "check_sha"= "5406edb9eb1ac39cc933cf077d25babf7c151479"
 fix_commit_msg = false
 default_branch = "main"
+require_version_in_branch_name=false
