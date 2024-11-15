@@ -1,0 +1,5 @@
+team = "gopidesupavan"
+repo = "backport-cli"
+"check_sha"= "9eba6ad5801d2f100dc10e1d6c8965780a5e2847"
+fix_commit_msg = false
+default_branch = "main"
