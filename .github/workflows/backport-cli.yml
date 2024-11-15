@@ -1,0 +1,43 @@
+
+name: Backport Commit
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: "Commit hash to backport"
+        required: true
+      target_branch:
+        description: "Target branch to backport to"
+        required: true
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+jobs:
+  backport:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install click requests tomli
+      - name: Run backport script
+        env:
+          GH_AUTH: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          python ./cherry_picker.py ${{ github.event.inputs.commit }} ${{ github.event.inputs.target_branch }}
